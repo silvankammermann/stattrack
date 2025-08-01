@@ -16,9 +16,9 @@ export type Player = {
 };
 
 export type Stats = {
-  twoPt: MadeOrMissed;
-  threePt: MadeOrMissed;
-  ft: MadeOrMissed;
+  twoPt: MadeAndMissed;
+  threePt: MadeAndMissed;
+  ft: MadeAndMissed;
   ast: number;
   reb: Rebounds;
   stl: number;
@@ -31,7 +31,7 @@ export type Rebounds = {
   def: number;
 };
 
-export type MadeOrMissed = {
+export type MadeAndMissed = {
   made: number;
   missed: number;
 };

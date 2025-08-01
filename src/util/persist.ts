@@ -1,4 +1,5 @@
 import { Game } from "../model/types"
+import { games } from "../data/games";
 
 const generateRandomId = () => {
   const alphabet = "abcdefghijklmnopqrstuvwxyz1234567890"
@@ -41,7 +42,8 @@ export const saveGame = (game: Game) => {
 }
 
 export const getGame = (id: string): Game | undefined => {
-  const game = localStorage.getItem(`game-${id}`);
-  if (!game) return undefined;
-  return JSON.parse(game);
+  console.log(games);
+  const game = games.filter(game => game.id === id);
+  console.log(game);
+  return game[0];
 }
