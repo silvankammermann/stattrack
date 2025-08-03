@@ -23,10 +23,10 @@ export default function GameOverview() {
         >
           <div className="flex justify-between mb-4">
             <p>
-              <span className="text-4xl">{player.nr}</span>
+              <span className="text-4xl mr-2">{player.nr}</span>
               <span>{player.name}</span>
             </p>
-            <div className="">
+            <div>
               <button className="bg-red-300 text-red-500 rounded-sm px-2 py-1">correct</button>
             </div>
           </div>
