@@ -23,6 +23,9 @@ export default function Index() {
         <p>
           {game.homeGame ? "Heimspiel" : "Auswärtsspiel"} - {game.date}
         </p>
+        <p>
+          {game.homeGame ? `${game.score} - ${game.opponent.score}` : `${game.opponent.score} - ${game.score}`} {game.score - game.opponent.score < 0 ? "Niederlage" : "Sieg"}
+        </p>
       </div>
     </Link>)}
 
@@ -33,6 +36,9 @@ export default function Index() {
         <h2>{game.opponent.name}</h2>
         <p>
           {game.homeGame ? "Heimspiel" : "Auswärtsspiel"} - {game.date}
+        </p>
+        <p>
+          {game.homeGame ? `${game.score} - ${game.opponent.score}` : `${game.opponent.score} - ${game.score}`} {game.score - game.opponent.score < 0 ? "Niederlage" : "Sieg"}
         </p>
       </div>
     </Link>)}
