@@ -7,21 +7,14 @@ export default function Index() {
   const localGames = getGames();
   const storedGames = data;
 
-  const addGame = () => {
-    // TODO
-  }
-
   return <main className="px-4">
     <h1>Spiele</h1>
 
     <div className="flex justify-between align-middle">
       <h2>Meine Spiele</h2>
-      <div>
-        <button
-          className="bg-green-400 px-4 py-1 rounded-md"
-          onClick={addGame}
-        >+</button>
-      </div>
+      <Link to="/new-game">
+        <button className="bg-green-400 px-4 py-1 rounded-md">+</button>
+      </Link>
     </div>
 
     {localGames.map(game => <Link to={`/game/${game.id}`} key={game.id}>
@@ -35,7 +28,7 @@ export default function Index() {
 
     <h2>Spiele aus der Datenbank</h2>
 
-    {storedGames.map(game => <Link to={`/game/${game.id}`} key={game.id}>
+    {storedGames.map(game => <Link to={`/result/${game.id}`} key={game.id}>
       <div className="bg-green-200 px-4 py-2 rounded-xl my-4">
         <h2>{game.opponent.name}</h2>
         <p>
