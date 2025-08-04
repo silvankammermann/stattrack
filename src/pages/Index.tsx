@@ -7,7 +7,7 @@ export default function Index() {
   const localGames = getGames();
   const storedGames = data;
 
-  return <main className="px-4">
+  return <main className="px-4 max-w-120 m-auto">
     <h1>Spiele</h1>
 
     <div className="flex justify-between align-middle">
