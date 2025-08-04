@@ -3,6 +3,8 @@ import NotFound from "./404";
 import { getGame } from "../util/persist";
 import { useState } from "react";
 import { Game } from "../model/types";
+import CountingStatButton from "../components/CountingStatButton";
+import DoubleCountingStat from "../components/DoubleCountingStat";
 
 export default function GameOverview() {
   const { id } = useParams();
@@ -11,6 +13,8 @@ export default function GameOverview() {
   if (!g) return <NotFound />;
 
   const [game] = useState<Game>(g);
+
+  console.log(JSON.stringify(game))
 
   return <>
     <Link to="/">Home</Link>
@@ -32,32 +36,16 @@ export default function GameOverview() {
           </div>
           <div className="flex gap-1">
             <div className="flex-1 grid grid-cols-2 grid-rows-2 gap-1">
-              <div className="flex rounded-sm bg-blue-100 text-blue-400">
-                <p className="flex-1 text-center py-0.5">2pt</p>
-                <p className="bg-green-300 text-green-800 rounded-l-sm text-center w-9 py-0.5">{player.stats.twoPt.made}</p>
-                <p className="bg-red-300 text-red-800 rounded-r-sm text-center w-9 py-0.5">{player.stats.twoPt.missed}</p>
-              </div>
-              <div className="flex rounded-sm bg-blue-100 text-blue-400">
-                <p className="flex-1 text-center py-0.5">Ft</p>
-                <p className="bg-green-300 text-green-800 rounded-l-sm text-center w-9 py-0.5">{player.stats.ft.made}</p>
-                <p className="bg-red-300 text-red-800 rounded-r-sm text-center w-9 py-0.5">{player.stats.ft.missed}</p>
-              </div>
-              <div className="flex rounded-sm bg-blue-100 text-blue-400">
-                <p className="flex-1 text-center py-0.5">3pt</p>
-                <p className="bg-green-300 text-green-800 rounded-l-sm text-center w-9 py-0.5">{player.stats.threePt.made}</p>
-                <p className="bg-red-300 text-red-800 rounded-r-sm text-center w-9 py-0.5">{player.stats.threePt.missed}</p>
-              </div>
-              <div className="flex rounded-sm bg-blue-100 text-blue-400">
-                <p className="flex-1 text-center py-0.5">Reb</p>
-                <p className="bg-green-300 text-green-800 rounded-l-sm text-center w-9 py-0.5">{player.stats.reb.def}</p>
-                <p className="bg-red-300 text-red-800 rounded-r-sm text-center w-9 py-0.5">{player.stats.reb.off}</p>
-              </div>
+              <DoubleCountingStat label="2pt" numberLeft={player.stats.twoPt.made} numberRight={player.stats.twoPt.missed} />
+              <DoubleCountingStat label="Ft" numberLeft={player.stats.ft.made} numberRight={player.stats.ft.missed} />
+              <DoubleCountingStat label="3pt" numberLeft={player.stats.threePt.made} numberRight={player.stats.threePt.missed} />
+              <DoubleCountingStat label="Reb" numberLeft={player.stats.reb.def} numberRight={player.stats.reb.off} />
             </div>
             <div className="grid grid-cols-2 grid-rows-2 gap-1">
-              <button className="bg-orange-200 text-orange-400 rounded-sm text-center w-16 py-0.5">Ast {player.stats.ast}</button>
-              <button className="bg-orange-200 text-orange-400 rounded-sm text-center w-16 py-0.5">Stl {player.stats.stl}</button>
-              <button className="bg-orange-200 text-orange-400 rounded-sm text-center w-16 py-0.5">Blk {player.stats.blk}</button>
-              <button className="bg-orange-200 text-orange-400 rounded-sm text-center w-16 py-0.5">To {player.stats.to}</button>
+              <CountingStatButton onClick={() => { }}>Ast {player.stats.ast}</CountingStatButton>
+              <CountingStatButton onClick={() => { }}>Stl {player.stats.stl}</CountingStatButton>
+              <CountingStatButton onClick={() => { }}>Blk {player.stats.blk}</CountingStatButton>
+              <CountingStatButton onClick={() => { }}>To {player.stats.to}</CountingStatButton>
             </div>
           </div>
         </div>
