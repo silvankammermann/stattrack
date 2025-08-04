@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import NotFound from "./404";
-import { getGame } from "../util/persist";
+import { getGame } from "../storage/local";
 import { useState } from "react";
 import { Game } from "../model/types";
 import CountingStatButton from "../components/CountingStatButton";
