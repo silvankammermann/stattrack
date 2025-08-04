@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Game, Player } from "../model/types";
+import { Game } from "../model/types";
 import Toggle from "../components/Toggle";
 import { nextId, saveGame } from "../storage/local";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function NewGame() {
   const [gameForm, setGameForm] = useState<Game>({
