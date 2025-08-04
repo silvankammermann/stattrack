@@ -1,5 +1,4 @@
 import { Game } from "../model/types"
-import { games } from "../data/games";
 
 const generateRandomId = () => {
   const alphabet = "abcdefghijklmnopqrstuvwxyz1234567890"
@@ -41,9 +40,17 @@ export const saveGame = (game: Game) => {
   });
 }
 
+export const getGames = (): Game[] => {
+  const games: Game[] = [];
+  getIds().forEach(id => {
+    const g = getGame(id);
+    g && games.push(g);
+  });
+  return games;
+}
+
 export const getGame = (id: string): Game | undefined => {
-  console.log(games);
-  const game = games.filter(game => game.id === id);
-  console.log(game);
-  return game[0];
+  const game = localStorage.getItem(`game-${id}`);
+  if (!game) return undefined;
+  return JSON.parse(game);
 }

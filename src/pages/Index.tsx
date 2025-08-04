@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom"
-import { games } from "../data/games"
+import { getGames } from "../util/persist";
 
 export default function Index() {
+
+  const games = getGames();
 
   const addGame = () => {
     // TODO

@@ -14,8 +14,6 @@ export default function GameOverview() {
 
   const [game] = useState<Game>(g);
 
-  console.log(JSON.stringify(game))
-
   return <>
     <Link to="/">Home</Link>
     <h1>{game.opponent.name}</h1>
