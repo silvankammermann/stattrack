@@ -8,6 +8,7 @@ const data: Game[] = [{
   },
   date: "3. Mai 2025",
   homeGame: false,
+  score: 20,
   players: [{
     nr: 0,
     name: "",

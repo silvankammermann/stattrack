@@ -6,6 +6,7 @@ export type Game = {
   };
   date: string;
   homeGame: boolean;
+  score: number;
   players: Player[];
 };
 

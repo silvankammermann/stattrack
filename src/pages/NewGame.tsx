@@ -9,6 +9,7 @@ export default function NewGame() {
     id: nextId(),
     homeGame: true,
     date: new Date().toISOString().split('T')[0],
+    score: 0,
     opponent: {
       name: "",
       score: 0,
