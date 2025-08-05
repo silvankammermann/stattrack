@@ -30,19 +30,35 @@ const GameRepository = (id: string) => {
     return true;
   }
 
-  const madeShot = (player: number, shot: "twoPt" | "threePt" | "ft") => {
-    const p = game.players.find(p => p.nr === player);
+  const madeShot = (playerNr: number, shot: "twoPt" | "threePt" | "ft") => {
+    const p = game.players.find(p => p.nr === playerNr);
     if (!p) return;
-    const delta = inverted.includes(player) ? -1 : 1;
+    const delta = inverted.includes(playerNr) ? -1 : 1;
     p.stats[shot].made = Math.max(0, p.stats[shot].made + delta);
     _saveAndNotify();
   }
 
-  const missedShot = (player: number, shot: "twoPt" | "threePt" | "ft") => {
-    const p = game.players.find(p => p.nr === player);
+  const missedShot = (playerNr: number, shot: "twoPt" | "threePt" | "ft") => {
+    const p = game.players.find(p => p.nr === playerNr);
     if (!p) return;
-    const delta = inverted.includes(player) ? -1 : 1;
+    const delta = inverted.includes(playerNr) ? -1 : 1;
     p.stats[shot].missed = Math.max(0, p.stats[shot].missed + delta);
+    _saveAndNotify();
+  }
+
+  const rebound = (playerNr: number, end: "off" | "def") => {
+    const p = game.players.find(p => p.nr === playerNr);
+    if (!p) return;
+    const delta = inverted.includes(playerNr) ? -1 : 1;
+    p.stats.reb[end] = Math.max(0, p.stats.reb[end] + delta);
+    _saveAndNotify();
+  }
+
+  const countingStat = (playerNr: number, stat: "ast" | "stl" | "blk" | "to") => {
+    const p = game.players.find(p => p.nr === playerNr);
+    if (!p) return;
+    const delta = inverted.includes(playerNr) ? -1 : 1;
+    p.stats[stat] = Math.max(0, p.stats[stat] + delta);
     _saveAndNotify();
   }
 
@@ -50,7 +66,9 @@ const GameRepository = (id: string) => {
     onChange,
     toggleInverted,
     madeShot,
-    missedShot
+    missedShot,
+    rebound,
+    countingStat
   };
 }
 

@@ -75,15 +75,15 @@ export default function GameOverview() {
                 label="Reb"
                 numberLeft={player.stats.reb.def}
                 numberRight={player.stats.reb.off}
-                onClickLeft={() => { }}
-                onClickRight={() => { }}
+                onClickLeft={() => { repo.rebound(player.nr, "def") }}
+                onClickRight={() => { repo.rebound(player.nr, "off") }}
               />
             </div>
             <div className="grid grid-cols-2 grid-rows-2 gap-1">
-              <CountingStatButton onClick={() => { }}>Ast {player.stats.ast}</CountingStatButton>
-              <CountingStatButton onClick={() => { }}>Stl {player.stats.stl}</CountingStatButton>
-              <CountingStatButton onClick={() => { }}>Blk {player.stats.blk}</CountingStatButton>
-              <CountingStatButton onClick={() => { }}>To {player.stats.to}</CountingStatButton>
+              <CountingStatButton onClick={() => { repo.countingStat(player.nr, "ast") }}>Ast {player.stats.ast}</CountingStatButton>
+              <CountingStatButton onClick={() => { repo.countingStat(player.nr, "stl") }}>Stl {player.stats.stl}</CountingStatButton>
+              <CountingStatButton onClick={() => { repo.countingStat(player.nr, "blk") }}>Blk {player.stats.blk}</CountingStatButton>
+              <CountingStatButton onClick={() => { repo.countingStat(player.nr, "to") }}>To {player.stats.to}</CountingStatButton>
             </div>
           </div>
         </div>
