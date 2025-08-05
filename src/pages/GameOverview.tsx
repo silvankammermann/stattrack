@@ -23,7 +23,7 @@ export default function GameOverview() {
 
   return <>
     <Link to="/">Home</Link>
-    <h1>{game.opponent.name}</h1>
+    <h1 className="text-center">{game.opponent.name} - {game.date}</h1>
     <div className="flex flex-wrap flex-row max-w-svw justify-center">
       {game.players.map(player =>
         <div

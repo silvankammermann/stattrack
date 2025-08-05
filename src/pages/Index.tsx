@@ -8,7 +8,7 @@ export default function Index() {
   const storedGames = data;
 
   return <main className="px-4 max-w-120 m-auto">
-    <h1>Spiele</h1>
+    <h1>TVM Stattrack</h1>
 
     <div className="flex justify-between align-middle">
       <h2>Meine Spiele</h2>
