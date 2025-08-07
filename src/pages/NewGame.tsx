@@ -5,6 +5,9 @@ import { nextId, saveGame } from "../storage/local";
 import { useNavigate } from "react-router-dom";
 
 export default function NewGame() {
+
+  const nav = useNavigate();
+
   const [gameForm, setGameForm] = useState<Game>({
     id: nextId(),
     homeGame: true,
@@ -20,7 +23,7 @@ export default function NewGame() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     saveGame(gameForm);
-    useNavigate()(`/game/${gameForm.id}`)
+    nav(`/game/${gameForm.id}`)
   }
 
   const setHomeGame = (val: boolean) => {
@@ -108,7 +111,7 @@ export default function NewGame() {
     }));
   }
 
-  return <>
+  return <main className="mx-4">
     <h1>Neues Spiel</h1>
     <form onSubmit={onSubmit}>
       <Toggle
@@ -116,29 +119,53 @@ export default function NewGame() {
         onToggle={(newVal) => {
           setHomeGame(newVal == "Heimspiel");
         }} />
-      <label htmlFor="opponent">Gegner</label>
-      <input type="text" name="opponent" id="opponent" value={gameForm.opponent.name} onChange={(e) => setOpponent(e.target.value)} required />
-
-      <label htmlFor="date">Datum</label>
-      <input type="date" name="date" id="date" value={gameForm.date} onChange={(e) => setDate(e.target.value)} required />
-
+      <label htmlFor="opponent">Gegner</label><br />
+      <input
+        className="w-full bg-gray-200 px-4 py-2 rounded-lg"
+        type="text"
+        name="opponent"
+        id="opponent"
+        value={gameForm.opponent.name} onChange={(e) => setOpponent(e.target.value)}
+        required />
+      <br />
+      <label htmlFor="date">Datum</label><br />
+      <input className="bg-gray-200 rounded-lg px-4 py-2" type="date" name="date" id="date" value={gameForm.date} onChange={(e) => setDate(e.target.value)} required />
+      <br />
       <label>Spieler</label>
-      {gameForm.players.map((player, index) => <div key={index}>
-        <input type="number" value={player.nr || ""} onChange={(e) => setPlayerNumber(index, Number(e.target.value))} />
-        <input type="text" value={player.name} onChange={(e) => setPlayerName(index, e.target.value)} />
-        <button onClick={(e) => {
-          e.preventDefault();
-          removePlayer(index);
-        }}>del.</button>
-
+      {gameForm.players.map((player, index) => <div key={index} className="flex my-1">
+        <input
+          className="rounded-l-lg pl-2 bg-gray-200 border-r w-14 [appearance:textfield]"
+          placeholder="Nr."
+          type="number"
+          value={player.nr || ""}
+          onChange={(e) => setPlayerNumber(index, Number(e.target.value))}
+          required />
+        <input
+          className="flex-1 pl-2 bg-gray-200"
+          placeholder="Name"
+          type="text"
+          value={player.name}
+          onChange={(e) => setPlayerName(index, e.target.value)}
+          required />
+        <button
+          className="bg-red-300 rounded-r-lg py-1 px-4"
+          onClick={(e) => {
+            e.preventDefault();
+            removePlayer(index);
+          }}>del.</button>
       </div>)}
+
+
       <button
+        className="block bg-green-200 text-green-700 py-1 px-4 mb-4 rounded-lg"
         onClick={(e) => {
           e.preventDefault();
           addPlayer();
         }}
-      >+</button>
-      <button type="submit">Spiel erstellen</button>
+      >Spieler hinzufügen</button>
+      <button
+        className="block bg-blue-200 rounded-lg text-cyan-900 py-1 px-4"
+        type="submit">Spiel erstellen</button>
     </form>
-  </>
+  </main>
 }
