@@ -8,7 +8,7 @@ type ToggleProps = {
 export default function Toggle({ options, onToggle }: ToggleProps) {
   const [current, setCurrent] = useState<string>(options[0]);
   return <>
-    <div>
+    <div className="grid grid-cols-2 bg-gray-100 rounded-lg">
       {options.map((option, i) =>
         <button
           key={i}
@@ -18,7 +18,10 @@ export default function Toggle({ options, onToggle }: ToggleProps) {
             if (onToggle) onToggle(option, current);
             setCurrent(option);
           }}
-          className={option == current ? "selected" : ""}>
+          className={`
+          ${option == current && "bg-green-200 rounded-lg text-green-700"}
+          px-4 py-1
+          `}>
           {option}
         </button>)}
     </div>
