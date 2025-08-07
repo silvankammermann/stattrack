@@ -11,7 +11,7 @@ export default function CountingStatButton({
 }: CountingStatButtonProps) {
   return <>
     <button
-      className="bg-orange-200 text-orange-400 rounded-sm text-center w-16 py-0.5"
+      className="bg-orange-200 text-orange-400 rounded-sm text-center w-12 py-0.5"
       onClick={onClick}
     >
       {children}

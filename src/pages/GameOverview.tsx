@@ -22,17 +22,17 @@ export default function GameOverview() {
   }, [repo]);
 
   return <>
-    <Link to="/">Home</Link>
+    <Link to="/" className="ml-4">{"< zurück"}</Link>
     <h1 className="text-center">{game.opponent.name} - {game.date}</h1>
     <div className="flex flex-wrap flex-row max-w-svw justify-center">
       {game.players.map(player =>
         <div
           key={player.nr}
-          className={`w-100 p-3 ${correctingPlayers.includes(player.nr) ? "bg-red-50" : "bg-white"} rounded-[1rem] shadow-xl m-4 inline-block`}
+          className={`w-100 p-3 ${correctingPlayers.includes(player.nr) ? "bg-red-50" : "bg-white"} rounded-[1rem] shadow-xl my-2 mx-4 inline-block`}
         >
           <div className="flex justify-between mb-4">
             <p>
-              <span className="text-4xl mr-2">{player.nr}</span>
+              <span className="text-2xl mr-2">{player.nr}</span>
               <span>{player.name}</span>
             </p>
             <div>
@@ -42,7 +42,7 @@ export default function GameOverview() {
                     ? setCorrectingPlayers(old => [...old, player.nr])
                     : setCorrectingPlayers(old => old.filter((nr) => nr != player.nr));
                 }}
-                className={`${correctingPlayers.includes(player.nr) ? "bg-green-300 text-green-500" : "bg-red-300 text-red-500"} rounded-sm px-2 py-1`}
+                className={`${correctingPlayers.includes(player.nr) ? "bg-green-300 text-green-500" : "bg-red-100 text-red-400"} rounded-sm px-2 py-1`}
               >
                 {correctingPlayers.includes(player.nr) ? "fertig" : "korrigieren"}
               </button>
