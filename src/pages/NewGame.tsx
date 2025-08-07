@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Game } from "../model/types";
 import Toggle from "../components/Toggle";
 import { nextId, saveGame } from "../storage/local";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NewGame() {
 
@@ -112,6 +112,7 @@ export default function NewGame() {
   }
 
   return <main className="mx-4">
+    <Link to="/">{"< zurück"}</Link>
     <h1>Neues Spiel</h1>
     <form onSubmit={onSubmit}>
       <Toggle

@@ -21,14 +21,14 @@ export default function GameOverview() {
     repo.onChange(setGame);
   }, [repo]);
 
-  return <>
+  return <main className="mx-4">
     <Link to="/" className="ml-4">{"< zurück"}</Link>
     <h1 className="text-center">{game.opponent.name} - {game.date}</h1>
     <div className="flex flex-wrap flex-row max-w-svw justify-center">
       {game.players.map(player =>
         <div
           key={player.nr}
-          className={`w-100 p-3 ${correctingPlayers.includes(player.nr) ? "bg-red-50" : "bg-white"} rounded-[1rem] shadow-xl my-2 mx-4 inline-block`}
+          className={`w-100 p-3 ${correctingPlayers.includes(player.nr) ? "bg-red-50" : "bg-white"} rounded-[1rem] shadow-xl my-2 inline-block`}
         >
           <div className="flex justify-between mb-2">
             <p>
@@ -89,5 +89,5 @@ export default function GameOverview() {
         </div>
       )}
     </div>
-  </>
+  </main>
 }
