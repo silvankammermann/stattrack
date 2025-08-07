@@ -30,7 +30,7 @@ export default function GameOverview() {
           key={player.nr}
           className={`w-100 p-3 ${correctingPlayers.includes(player.nr) ? "bg-red-50" : "bg-white"} rounded-[1rem] shadow-xl my-2 mx-4 inline-block`}
         >
-          <div className="flex justify-between mb-4">
+          <div className="flex justify-between mb-2">
             <p>
               <span className="text-2xl mr-2">{player.nr}</span>
               <span>{player.name}</span>
