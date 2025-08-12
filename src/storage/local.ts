@@ -54,3 +54,8 @@ export const getGame = (id: string): Game | undefined => {
   if (!game) return undefined;
   return JSON.parse(game);
 }
+
+export const deleteGame = (id: string): void => {
+  localStorage.removeItem(`game-${id}`);
+  setIds(prev => prev.filter(i => i != id));
+}
