@@ -3,7 +3,7 @@ import { Game } from "../model/types";
 const data: Game[] = [{
   id: "qwer",
   opponent: {
-    name: "BC Gegner",
+    name: "BC Allschwil",
     score: 0
   },
   date: "2. Mai 2025",
