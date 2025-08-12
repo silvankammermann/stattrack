@@ -17,7 +17,42 @@ export default function NewGame() {
       name: "",
       score: 0,
     },
-    players: []
+    players: [
+      { nr: 4, name: "Dave" },
+      { nr: 6, name: "Edi" },
+      { nr: 7, name: "Albert" },
+      { nr: 8, name: "Michi" },
+      { nr: 9, name: "Nevio" },
+      { nr: 10, name: "Simon" },
+      { nr: 11, name: "Mischa" },
+      { nr: 12, name: "Stifu" },
+      { nr: 14, name: "Silvan" },
+    ].map(p => ({
+      nr: p.nr,
+      name: p.name,
+      stats: {
+        twoPt: {
+          made: 0,
+          missed: 0
+        },
+        threePt: {
+          made: 0,
+          missed: 0
+        },
+        ft: {
+          made: 0,
+          missed: 0
+        },
+        ast: 0,
+        reb: {
+          off: 0,
+          def: 0
+        },
+        stl: 0,
+        blk: 0,
+        to: 0
+      }
+    }))
   });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
