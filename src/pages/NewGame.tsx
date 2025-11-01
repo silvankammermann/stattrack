@@ -5,7 +5,6 @@ import { nextId, saveGame } from "../storage/local";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function NewGame() {
-
   const nav = useNavigate();
 
   const [gameForm, setGameForm] = useState<Game>({
